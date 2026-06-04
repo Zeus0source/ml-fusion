@@ -5,7 +5,14 @@ import pickle
 import os
 from PIL import Image
 from tensorflow import keras
-
+# Auto-setup: train models if they don't exist
+if not os.path.exists("models/sentiment_model.pkl") or \
+   not os.path.exists("models/cifar_model.h5"):
+    import setup
+    with st.spinner("Setting up models for first time... this takes ~15 mins"):
+        setup.train_sentiment()
+        setup.train_cifar()
+    st.rerun()
 # ── PAGE CONFIG (must be first) ────────────────────────────────────
 st.set_page_config(page_title="ML Fusion", layout="wide")
 
@@ -374,6 +381,7 @@ if page_key == "sentiment":
                 "Prediction": pred.capitalize(),
                 "Confidence": f"{confidence:.1f}%"
             })
+
 
         elif predict_btn:
             st.markdown("""
