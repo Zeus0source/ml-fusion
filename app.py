@@ -4,14 +4,16 @@ import numpy as np
 import pickle
 import os
 from PIL import Image
-from tensorflow import keras
-# Auto-setup: train models if they don't exist
+try:
+    from tensorflow import keras
+except ImportError:
+    import tf_keras as keras
+# Auto-setup: download models if they don't exist
 if not os.path.exists("models/sentiment_model.pkl") or \
    not os.path.exists("models/cifar_model.h5"):
     import setup
-    with st.spinner("Setting up models for first time... this takes ~15 mins"):
-        setup.train_sentiment()
-        setup.train_cifar()
+    with st.spinner("Downloading models... please wait ~1 min"):
+        setup.download_models()
     st.rerun()
 # ── PAGE CONFIG (must be first) ────────────────────────────────────
 st.set_page_config(page_title="ML Fusion", layout="wide")

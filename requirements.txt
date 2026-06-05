@@ -2,7 +2,7 @@ streamlit==1.35.0
 pandas
 numpy
 scikit-learn
-tensorflow-cpu
 matplotlib
 Pillow
-kaggle
+huggingface-hub
+tf-keras
