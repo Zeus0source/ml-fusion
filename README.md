@@ -36,12 +36,12 @@ venv\Scripts\activate
 pip install -r requirements.txt
 streamlit run app.py
 ```
+---
+
+## Project Structure
 ml-fusion/
 ├── app.py                 # Main Streamlit app
 ├── setup.py               # Model download from Hugging Face
 ├── train_sentiments.py    # Sentiment model training script
 ├── train_cifar.py         # CNN training script
 └── requirements.txt
----
-
-## Project Structure
