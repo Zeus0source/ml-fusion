@@ -7,7 +7,7 @@ from PIL import Image
 try:
     from tensorflow import keras
 except ImportError:
-    import tf_keras as keras
+   import keras
 # Auto-setup: download models if they don't exist
 if not os.path.exists("models/sentiment_model.pkl") or \
    not os.path.exists("models/cifar_model.h5"):
